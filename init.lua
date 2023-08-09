@@ -8,26 +8,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
--- set vim options here (vim.<first_key>.<second_key> = value)
-vim.opt.clipboard = ""
-vim.opt.colorcolumn = "80,100"
-vim.opt.foldcolumn = "0" -- no folding marks
-vim.opt.numberwidth = 4
--- set to true or false etc.
-vim.opt.spell = true -- sets vim.opt.spell
-vim.opt.timeoutlen = 1000 -- I'm a slow typist!
-vim.opt.undofile = false
-
-vim.g.autoformat_enabled = false -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
-vim.g.inlay_hints_enabled = true
-vim.g.markdown_fenced_languages = { "ts=typescript" }
-
 -- Setup Lazy:
 -- ------------------------------------------------------------
 require("lazy").setup {
+  defaults = { lazy = true, },
+  lockfile = vim.fn.stdpath("state") .. "/lazy-lock.json",
   spec = {
     { "AstroNvim/AstroNvim", branch = "v4", import = "astronvim.plugins" },
-    -- My overrides...
 
     -- Extended file type support
     { "sheerun/vim-polyglot", lazy = false },
@@ -80,6 +67,7 @@ require("lazy").setup {
     {
       "AstroNvim/astrolsp",
       opts = {
+        features = { inlay_hints = true, },
         config = {
           rust_analyzer = {
             settings = {
@@ -94,6 +82,7 @@ require("lazy").setup {
             },
           },
         },
+        formatting = { timeout_ms = 10000, },
       },
     },
     {
@@ -219,7 +208,6 @@ require("lazy").setup {
           components.fill(),
           components.diagnostics(),
         }
-        opts.tabline = {}
 
         return opts
       end,
@@ -231,8 +219,8 @@ require("lazy").setup {
 -- ------------------------------------------------------------
 
 -- override LSP inlay hints
-vim.api.nvim_set_hl(0, "Comment", { fg = "#777d86", italic = false, })
-vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#777d86", italic = true, })
+vim.api.nvim_set_hl(0, "Comment", { fg = "#575d66", italic = false, })
+vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#575d66", italic = true, })
 
 -- Register slint filetype for *.slint files
 vim.api.nvim_create_augroup("slint_auto", { clear = true })
@@ -242,8 +230,17 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   callback = function() vim.bo.filetype = "slint" end,
 })
 
--- force tab line to off again!
-vim.opt.showtabline = 0
+-- set vim options here (vim.<first_key>.<second_key> = value)
+vim.opt.clipboard = ""
+vim.opt.colorcolumn = "80,100"
+vim.opt.foldcolumn = "0" -- no folding marks
+vim.opt.numberwidth = 4
+vim.opt.showtabline = 0 -- force tab line to off
+vim.opt.spell = true -- sets vim.opt.spell
+vim.opt.timeoutlen = 1000 -- I'm a slow typist!
+vim.opt.undofile = false
+
+vim.g.markdown_fenced_languages = { "ts=typescript" }
 
 -- Prettify LSP logs:
 require("vim.lsp").set_log_level("OFF")
