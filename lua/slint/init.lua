@@ -87,9 +87,7 @@ local M = {
       "SDExecShowPreview",
       function()
         local M = require("slint")
-        local url = vim.fn.expand "%:p"
-        url = url:gsub("\\", "/");
-        url = "file://" .. url;
+        local url = vim.uri_from_fname(vim.api.nvim_buf_get_name(0))
         M.slint_dev_execute("slint/showPreview", { url }, M.slint_dev_notifier)
       end,
       {}
