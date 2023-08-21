@@ -11,8 +11,8 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 -- Setup Lazy:
 -- ------------------------------------------------------------
 require("lazy").setup {
-  defaults = { lazy = true, },
-  lockfile = vim.fn.stdpath("state") .. "/lazy-lock.json",
+  defaults = { lazy = true },
+  lockfile = vim.fn.stdpath "state" .. "/lazy-lock.json",
   spec = {
     { "AstroNvim/AstroNvim", branch = "v4", import = "astronvim.plugins" },
 
@@ -58,7 +58,7 @@ require("lazy").setup {
     --   "L3MON4D3/LuaSnip",
     --   config = function(plugin, opts)
     --     require("plugins.configs.luasnip")(plugin, opts)
-    --     require("luasnip.loaders.from_vscode").lazy_load { paths = { "/home/extra/.config/nvim-data/snippets" } } -- Not needed on windows! 
+    --     require("luasnip.loaders.from_vscode").lazy_load { paths = { "/home/extra/.config/nvim-data/snippets" } } -- Not needed on windows!
     --   end,
     -- },
     -- force enable nvim-dap on windows
@@ -67,22 +67,38 @@ require("lazy").setup {
     {
       "AstroNvim/astrolsp",
       opts = {
-        features = { inlay_hints = true, },
+        features = { inlay_hints = true },
         config = {
           rust_analyzer = {
             settings = {
               ["rust-analyzer"] = {
                 cargo = {
-                  buildScripts = { enable = true, },
-                  extraEnv = { CARGO_PROFILE_RUST_ANALYZER_INHERITS = 'dev', },
-                  extraArgs = { "--profile", "rust-analyzer", },
+                  buildScripts = { enable = true },
+                  extraEnv = { CARGO_PROFILE_RUST_ANALYZER_INHERITS = "dev" },
+                  extraArgs = { "--profile", "rust-analyzer" },
                 },
-                procMacro = { enable = true, },
+                procMacro = { enable = true },
               },
             },
           },
         },
-        formatting = { timeout_ms = 10000, },
+        formatting = {
+          -- control auto formatting on save
+          format_on_save = {
+            -- enable or disable format on save globally
+            enabled = false,
+            -- enable format on save for specified filetypes only
+            allow_filetypes = {
+              "rust",
+            },
+          },
+          -- disable formatting capabilities for specific language servers
+          disabled = {
+            "null_ls",
+          },
+          -- default format timeout
+          timeout_ms = 10000,
+        },
       },
     },
     {
@@ -167,28 +183,28 @@ require("lazy").setup {
           },
         },
         pickers = {
-          current_buffer_tags = { fname_width = 100, },
-          jumplist = { fname_width = 100, },
-          loclist = { fname_width = 100, },
-          lsp_definitions = { fname_width = 100, },
-          lsp_document_symbols = { fname_width = 100, },
-          lsp_dynamic_workspace_symbols = { fname_width = 100, },
-          lsp_implementations = { fname_width = 100, },
-          lsp_incoming_calls = { fname_width = 100, },
-          lsp_outgoing_calls = { fname_width = 100, },
-          lsp_references = { fname_width = 100, },
-          lsp_type_definitions = { fname_width = 100, },
-          lsp_workspace_symbols = { fname_width = 100, symbol_width = 50, },
-          quickfix = { fname_width = 100, },
-          tags = { fname_width = 100, },
-        }
+          current_buffer_tags = { fname_width = 100 },
+          jumplist = { fname_width = 100 },
+          loclist = { fname_width = 100 },
+          lsp_definitions = { fname_width = 100 },
+          lsp_document_symbols = { fname_width = 100 },
+          lsp_dynamic_workspace_symbols = { fname_width = 100 },
+          lsp_implementations = { fname_width = 100 },
+          lsp_incoming_calls = { fname_width = 100 },
+          lsp_outgoing_calls = { fname_width = 100 },
+          lsp_references = { fname_width = 100 },
+          lsp_type_definitions = { fname_width = 100 },
+          lsp_workspace_symbols = { fname_width = 100, symbol_width = 50 },
+          quickfix = { fname_width = 100 },
+          tags = { fname_width = 100 },
+        },
       },
     },
     -- override heirline config
     {
       "rebelot/heirline.nvim",
       opts = function(_, opts)
-        local components = require("astroui.status.component");
+        local components = require "astroui.status.component"
 
         opts.statusline = {
           hl = { fg = "fg", bg = "bg" },
@@ -203,7 +219,7 @@ require("lazy").setup {
         }
         opts.winbar = {
           hl = { fg = "fg", bg = "bg" },
-          components.file_info { filename = { modify = ":p:." }, },
+          components.file_info { filename = { modify = ":p:." } },
           components.breadcrumbs { icon = { hl = true }, padding = { left = 1 } },
           components.fill(),
           components.diagnostics(),
@@ -219,8 +235,8 @@ require("lazy").setup {
 -- ------------------------------------------------------------
 
 -- override LSP inlay hints
-vim.api.nvim_set_hl(0, "Comment", { fg = "#575d66", italic = false, })
-vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#575d66", italic = true, })
+vim.api.nvim_set_hl(0, "Comment", { fg = "#575d66", italic = false })
+vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#575d66", italic = true })
 
 -- Register slint filetype for *.slint files
 vim.api.nvim_create_augroup("slint_auto", { clear = true })
@@ -243,9 +259,8 @@ vim.opt.undofile = false
 vim.g.markdown_fenced_languages = { "ts=typescript" }
 
 -- Prettify LSP logs:
-require("vim.lsp").set_log_level("OFF")
+require("vim.lsp").set_log_level "OFF"
 -- require("vim.lsp").set_log_level("TRACE")
 require("vim.lsp.log").set_format_func(vim.inspect)
 
 require("slint").setup()
-
