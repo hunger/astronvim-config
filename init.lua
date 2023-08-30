@@ -19,6 +19,31 @@ require("lazy").setup {
     -- Extended file type support
     { "sheerun/vim-polyglot", lazy = false },
 
+    {
+      "luckasRanarison/nvim-devdocs",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim",
+        "nvim-treesitter/nvim-treesitter",
+      },
+      opts = {},
+      cmd = {
+        "DevdocsFetch",
+        "DevdocsInstall",
+        "DevdocsUninstall",
+        "DevdocsOpen",
+        "DevdocsOpenFloat",
+        "DevdocsOpenCurrent",
+        "DevdocsOpenCurrentFloat",
+        "DevdocsUpdate",
+        "DevdocsUpdateAll",
+      },
+      keys = {
+        { "<leader>fd", "<cmd>DevdocsOpen<CR>", desc = "Find in Devdocs" },
+        { "<leader>fD", "<cmd>DevdocsOpenCurrent<CR>", desc = "Find current in Devdocs" },
+      },
+    },
+
     -- Community plugins:
     { "AstroNvim/astrocommunity", branch = "v4" },
     { import = "astrocommunity.pack.bash" },
@@ -53,6 +78,7 @@ require("lazy").setup {
     -- OVERRIDE AstronVim plugins:
     { "max397574/better-escape.nvim", enabled = false },
     { "goolord/alpha-nvim", enabled = false },
+    { "nvim-telescope/telescope-fzf-native.nvim", enabled = false }, -- fails to build due to missing build tools
     -- {
     --   "L3MON4D3/LuaSnip",
     --   config = function(plugin, opts)
