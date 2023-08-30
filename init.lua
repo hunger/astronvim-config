@@ -53,7 +53,6 @@ require("lazy").setup {
     -- OVERRIDE AstronVim plugins:
     { "max397574/better-escape.nvim", enabled = false },
     { "goolord/alpha-nvim", enabled = false },
-    { "nvim-telescope/telescope-fzf-native.nvim", enabled = false }, -- fails to build due to missing build tools
     -- {
     --   "L3MON4D3/LuaSnip",
     --   config = function(plugin, opts)
