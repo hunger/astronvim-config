@@ -1,0 +1,33 @@
+{
+  "SPDX Header (GPL)": {
+    "prefix": ["gpl"],
+    "body": ["$LINE_COMMENT Copyright (C) $CURRENT_YEAR Tobias Hunger <tobias.hunger@gmail.com>\n$LINE_COMMENT SPDX-License-Identifier: ${1|GPL-3.0-or-later,GPL-3.0-only,GPL-2.0-only|}\n\n"],
+    "description": "A SPDX Header (GPL)."
+  },
+  "SPDX Header (LGPL)": {
+    "prefix": ["lgpl"],
+    "body": ["$LINE_COMMENT Copyright (C) $CURRENT_YEAR Tobias Hunger <tobias.hunger@gmail.com>\n$LINE_COMMENT SPDX-License-Identifier: ${1|LGPL-3.0-or-later,LGPL-3.0-only,LGPL-2.0-only|}\n\n"],
+    "description": "A SPDX Header (xGPL)."
+  },
+  "SPDX Header (slint)": {
+    "prefix": ["slint"],
+    "body": ["$LINE_COMMENT Copyright © SixtyFPS GmbH <info@slint.dev>\n$LINE_COMMENT SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-1.1 OR LicenseRef-Slint-commercial\n\n"],
+    "description": "A SPDX Header (sixtyfps)."
+  },
+
+  "Header Comment": {
+    "prefix": ["HEADER"],
+    "body": ["$LINE_COMMENT ---------------------------------------------------------------------------\n$LINE_COMMENT ${1}:\n$LINE_COMMENT ---------------------------------------------------------------------------\n\n${0}"],
+    "description": "A Section Header Comment"
+  },
+  "Subheader Comment": {
+    "prefix": ["SUBHEADER"],
+    "body": ["$LINE_COMMENT ${1}:\n$LINE_COMMENT ---------------------------------------------------------------------------\n\n${0}"],
+    "description": "A Sub-Section Header Comment"
+  },
+  "Debug markup": {
+    "prefix": ["debug"],
+    "body": ["$LINE_COMMENT <debug>\n${1}\n$LINE_COMMENT </debug>\n${0}"],
+    "description": "A debug markup comment"
+  }
+}

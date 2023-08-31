@@ -1,0 +1,18 @@
+{
+  "name": "CustomSnippets",
+  "description": "Custom snippets for myself",
+  "version": "0.0.1",
+  "publisher": "me",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "categories": ["Snippets"],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "all",
+        "path": "./all.json"
+      }
+    ]
+  }
+}

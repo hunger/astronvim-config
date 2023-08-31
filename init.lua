@@ -57,9 +57,9 @@ require("lazy").setup {
     { "nvim-telescope/telescope-fzf-native.nvim", enabled = false }, -- fails to build due to missing build tools
     {
       "L3MON4D3/LuaSnip",
-      config = function(plugin, opts)
+      config = function(_, opts)
         require("luasnip").setup(opts)
-        require("luasnip.loaders.from_vscode").lazy_load { paths = { vim.fn.stdpath 'data' .. '/snippets' } } -- Not needed on windows!
+        require("luasnip.loaders.from_vscode").lazy_load { paths = { vim.fn.stdpath 'config' .. '/snippets' } } -- Not needed on windows!
       end,
     },
     -- force enable nvim-dap on windows
