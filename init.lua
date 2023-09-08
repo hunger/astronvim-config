@@ -36,7 +36,7 @@ require("lazy").setup {
 
     { import = "astrocommunity.diagnostics.trouble-nvim" },
     { import = "astrocommunity.git.octo-nvim" },
-    { import = "astrocommunity.motion.leap-nvim" },
+    { import = "astrocommunity.motion.flash-nvim" },
     { import = "astrocommunity.motion.nvim-surround" },
 
     -- use modern inlay hints:
