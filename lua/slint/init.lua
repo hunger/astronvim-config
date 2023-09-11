@@ -22,7 +22,7 @@ local M = {
     srv.name = "dev-slint"
     srv.root_dir = vim.fn.expand "%:p:h"
 
-    srv.cmd = { "C:\\src\\slint\\target\\debug\\slint-lsp" }
+    srv.cmd = { "/home/tobias/src/slint/target/debug/slint-lsp" }
     srv.cmd_cwd = srv.root_dir
     local on_init = srv.on_init
 
