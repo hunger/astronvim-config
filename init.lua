@@ -39,18 +39,6 @@ require("lazy").setup {
     { import = "astrocommunity.motion.flash-nvim" },
     { import = "astrocommunity.motion.nvim-surround" },
 
-    -- use modern inlay hints:
-    {
-      "p00f/clangd_extensions.nvim",
-      optional = true,
-      opts = { extensions = { autoSetHints = false } },
-    },
-    {
-      "simrat39/rust-tools.nvim",
-      optional = true,
-      opts = { tools = { inlay_hints = { auto = false } } },
-    },
-
     -- OVERRIDE AstronVim plugins:
     { "max397574/better-escape.nvim", enabled = false },
     { "goolord/alpha-nvim", enabled = false },
@@ -92,10 +80,6 @@ require("lazy").setup {
             allow_filetypes = {
               "rust",
             },
-          },
-          -- disable formatting capabilities for specific language servers
-          disabled = {
-            "null_ls",
           },
           -- default format timeout
           timeout_ms = 10000,
