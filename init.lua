@@ -40,6 +40,14 @@ require("lazy").setup {
     { import = "astrocommunity.motion.nvim-surround" },
 
     -- OVERRIDE AstronVim plugins:
+    { "nvim-treesitter/nvim-treesitter",
+      config= function(_, opts)
+        opts.ensure_installed = {}
+        opts.auto_install = false
+        opts.ignore_install = "all"
+        return opts
+      end,
+    },
     { "max397574/better-escape.nvim", enabled = false },
     { "goolord/alpha-nvim", enabled = false },
     { "nvim-telescope/telescope-fzf-native.nvim", enabled = false }, -- fails to build due to missing build tools
