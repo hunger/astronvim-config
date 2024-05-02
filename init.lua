@@ -14,13 +14,13 @@ require("lazy").setup {
   defaults = { lazy = true },
   lockfile = vim.fn.stdpath "state" .. "/lazy-lock.json",
   spec = {
-    { "AstroNvim/AstroNvim", branch = "v4", import = "astronvim.plugins" },
+    { "AstroNvim/AstroNvim", branch = "main", import = "astronvim.plugins" },
 
     -- Extended file type support
     { "sheerun/vim-polyglot", lazy = false },
 
     -- Community plugins:
-    { "AstroNvim/astrocommunity", branch = "v4" },
+    { "AstroNvim/astrocommunity", branch = "main" },
     { import = "astrocommunity.editing-support.nvim-devdocs" },
     { import = "astrocommunity.pack.bash" },
     { import = "astrocommunity.pack.cmake" },
