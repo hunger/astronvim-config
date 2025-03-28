@@ -21,7 +21,6 @@ require("lazy").setup {
 
     -- Community plugins:
     { "AstroNvim/astrocommunity", branch = "main" },
-    { import = "astrocommunity.editing-support.nvim-devdocs" },
     { import = "astrocommunity.pack.bash" },
     { import = "astrocommunity.pack.cmake" },
     { import = "astrocommunity.pack.cpp" },
@@ -49,7 +48,7 @@ require("lazy").setup {
       end,
     },
     { "max397574/better-escape.nvim", enabled = false },
-    { "goolord/alpha-nvim", enabled = false },
+    { "folke/snacks.nvim", enabled = false },
     { "nvim-telescope/telescope-fzf-native.nvim", enabled = false }, -- fails to build due to missing build tools
     {
       "L3MON4D3/LuaSnip",
